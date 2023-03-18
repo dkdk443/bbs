@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>えぬちゃんねる</title>
 </head>
 
@@ -90,72 +91,47 @@
         </div> --}}
         <div class="container column">
             <div class="block">
-                <div class="box">
-                    <div class="section">
-                        <i class="fa-solid fa-ellipsis"></i>
-                        <h4 class="title is-4 mt-5">これはｗｗｗ重大なミスｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗ</h4>
-                        <h5 class="subtitle is-5 has-text-right">2023-01-02</h5>
-                        <div class="tags are-medium">
-                            <span class="tag">All</span>
-                            <span class="tag">Medium</span>
-                            <span class="tag">Size</span>
+                @foreach ($threads as $thread)
+                    <div class="box">
+                        <div class="section">
+                            <i class="fa-solid fa-ellipsis"></i>
+                            <h4 class="title is-4 mt-5">{{ $thread->title }}</h4>
+                            <h5 class="subtitle is-5 has-text-right">{{ $thread->created_at }}</h5>
+                            <div class="tags are-medium">
+                                <span class="tag">All</span>
+                                <span class="tag">Medium</span>
+                                <span class="tag">Size</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="content section">
-                        <div class="my-6">
-                            <h5 class="subtitle is-6">1 ：以下、名無しにかわりましてVIPがお送りします：2011/03/05(土) 13:41:42.31 ID:OAFBoFRd0
-                            </h5>
-                            <p class="is-size-5">草
-                            </p>
-                        </div>
-                        <div class="my-6">
-                            <h5 class="subtitle is-6">2 ：
-                                <span style="font-weight: 600">以下、名無しにかわりましてVIPがお送りします</span>
-                                ：2011/03/05(土) 13:41:42.31 ID:OAFBoFRd0
-                            </h5>
-                            <p class="is-size-5">勢いがすごい
-                            </p>
-                        </div>
+                        <div class="content section">
+                            @foreach ($thread->comments as $comment)
+                                <div class="my-6">
+                                    <h5 class="subtitle is-6">
+                                        {{ $comment->comment_no }}：
+                                        {{ $comment->user->name }}
+                                        {{ $comment->created_at }}
+                                        ID:{{ $comment->user->user_id }}
+                                    </h5>
+                                    <p class="is-size-5">
+                                        {{ $comment->content }}
+                                    </p>
+                                </div>
+                                @if ($loop->index === 2)
+                                @break
+                            @endif
+                        @endforeach
                         <div class="my-1">
                             <a href="#" class="btn btn-primary">続きを読む</a>
                         </div>
                     </div>
                 </div>
-                <div class="box">
-                    <div class="section">
-                        <i class="fa-solid fa-ellipsis"></i>
-                        <h4 class="title is-4 mt-5">これはｗｗｗ重大なミスｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗｗ</h4>
-                        <h5 class="subtitle is-5 has-text-right">2023-01-02</h5>
-                        <div class="tags are-medium">
-                            <span class="tag">All</span>
-                            <span class="tag">Medium</span>
-                            <span class="tag">Size</span>
-                        </div>
-                    </div>
-                    <div class="content section">
-                        <div class="my-6">
-                            <h5 class="subtitle is-6">1 ：以下、名無しにかわりましてVIPがお送りします：2011/03/05(土) 13:41:42.31 ID:OAFBoFRd0
-                            </h5>
-                            <p class="is-size-5">草
-                            </p>
-                        </div>
-                        <div class="my-6">
-                            <h5 class="subtitle is-6">2 ：
-                                <span style="font-weight: 600">以下、名無しにかわりましてVIPがお送りします</span>
-                                ：2011/03/05(土) 13:41:42.31 ID:OAFBoFRd0
-                            </h5>
-                            <p class="is-size-5">勢いがすごい
-                            </p>
-                        </div>
-                        <div class="my-1">
-                            <a href="#" class="btn btn-primary">続きを読む</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </main>
-    <footer></footer>
+        {{ $threads->links() }}
+    </div>
+</main>
+
+<footer></footer>
 </body>
 
 </html>

@@ -19,6 +19,7 @@ class CommentFactory extends Factory
     {
         return [
             'content' => fake()->sentence(),
+            'comment_no' => fake()->numberBetween(),
             'user_id' => User::factory(),
         ];
     }

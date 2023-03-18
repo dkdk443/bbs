@@ -13,7 +13,10 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        //
+        $threads = Thread::with('comments.user')->paginate(4);
+
+        return view('threads.index')
+            ->with('threads', $threads);
     }
 
     /**
