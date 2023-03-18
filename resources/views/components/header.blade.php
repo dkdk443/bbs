@@ -2,8 +2,8 @@
     <header mb-4>
         <nav class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="" href="">
-                    <img src="nch-logo.png" width="280px">
+                <a class="" href={{ route('top') }}>
+                    <img src="/nch-logo.png" width="280px">
                 </a>
 
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"

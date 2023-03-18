@@ -30,7 +30,7 @@
                     @endif
                 @endforeach
                 <div class="my-1">
-                    <a href="#" class="btn btn-primary">続きを読む</a>
+                    <a href={{ route('thread.show', ['thread' => $thread->id]) }} class="btn btn-primary">続きを読む</a>
                 </div>
             </div>
         </div>

@@ -14,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ThreadController::class, 'index']);
+Route::get('/', [ThreadController::class, 'index'])->name('top');
+Route::get('/thread/{thread}', [ThreadController::class, 'show'])->name('thread.show');

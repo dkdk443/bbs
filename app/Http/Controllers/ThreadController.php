@@ -40,7 +40,9 @@ class ThreadController extends Controller
      */
     public function show(Thread $thread)
     {
-        //
+        $thread = Thread::find($thread)->first();
+        return view('threads.show')
+            ->with('thread', $thread);
     }
 
     /**
