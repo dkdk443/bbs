@@ -57,9 +57,11 @@ services:
             - mysql:mysql
         ports:
             - 8888:80
+        depends_on:
+            - mysql
         environment:
-            MYSQL_USERNAME: '${DB_USERNAME}'
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            PMA_USER: '${DB_USERNAME}'
+            PMA_PASSWORD: '${DB_PASSWORD}'
             PMA_HOST: mysql
         networks:
             - sail
