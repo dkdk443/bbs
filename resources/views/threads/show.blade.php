@@ -14,17 +14,7 @@
             </div>
             <div class="content section">
                 @foreach ($thread->comments as $comment)
-                    <div class="my-6">
-                        <h5 class="subtitle is-6">
-                            {{ $comment->comment_no }}：
-                            {{ $comment->user->name }}
-                            {{ $comment->created_at }}
-                            ID:{{ $comment->user->user_id }}
-                        </h5>
-                        <p class="is-size-5">
-                            {{ $comment->content }}
-                        </p>
-                    </div>
+                    <x-comment :$comment />
                 @endforeach
             </div>
         </div>

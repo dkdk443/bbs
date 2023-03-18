@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\View\Components\Comment;
 use App\View\Components\Header;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -21,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-         Blade::component('header', Header::class);
+        Blade::component('header', Header::class);
+        Blade::component('comment', Comment::class);
     }
 }
