@@ -19,8 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ThreadController::class, 'index'])->name('top');
 Route::get('/thread/{thread}', [ThreadController::class, 'show'])->name('thread.show');
+Route::get('/thread', [ThreadController::class, 'create'])->name('thread.create');
+Route::post('/thread', [ThreadController::class, 'store'])->name('thread.store');
+
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::post('/registUser', [RegisterController::class, 'registUser'])->name('registUser');
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+

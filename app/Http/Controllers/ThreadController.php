@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\StoreThreadRequest;
 use App\Http\Requests\UpdateThreadRequest;
+use App\Models\Comment;
 use App\Models\Thread;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
@@ -13,7 +16,7 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $threads = Thread::with('comments.user')->paginate(4);
+        $threads = Thread::with('comments.user')->orderBy('created_at', 'DESC')->paginate(4);
 
         return view('threads.index')
             ->with('threads', $threads);
@@ -24,15 +27,31 @@ class ThreadController extends Controller
      */
     public function create()
     {
-        //
+        return view('threads.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreThreadRequest $request)
+    public function store(StoreThreadRequest $storeThreadRequest, StoreCommentRequest $storeCommentRequest)
     {
-        //
+        $thread = new Thread();
+        $thread->title = $storeThreadRequest->title;
+        $thread->user_id = Auth::id();
+        $thread->save();
+
+        $comment = new Comment();
+
+        $comment->content = $storeCommentRequest->content;
+        $comment->thread_id = $thread->id;
+        $comment->user_id = Auth::id();
+
+        $commentNo = $comment->getCommentNo($thread->id);
+        $comment->comment_no = $commentNo;
+
+        $comment->save();
+
+        return redirect()->intended('/');
     }
 
     /**

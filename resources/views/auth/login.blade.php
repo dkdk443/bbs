@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="center">
+    <div class="center p-5">
         <form class="box" method="POST" action={{ route('authenticate') }}>
             @csrf
             <h4 class="title is-4">ログイン</h4>

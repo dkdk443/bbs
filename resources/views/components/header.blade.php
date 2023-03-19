@@ -37,7 +37,7 @@
                                 </a>
                             @endguest
                             @auth
-                                <a class="button is-primary">
+                                <a class="button is-primary" href={{ route('thread.create') }}>
                                     スレッド作成
                                 </a>
                                 <form method="POST" action={{ route('logout') }}>
