@@ -18,7 +18,7 @@
         {{-- <div class="column is-one-fifth mr-5">
             <aside class="menu block">
                 <p class="menu-label">
-                    General
+                    カテゴリ
                 </p>
                 <ul class="menu-list">
                     <li><a>Dashboard</a></li>

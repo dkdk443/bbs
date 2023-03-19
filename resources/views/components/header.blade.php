@@ -28,12 +28,23 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary">
-                                <strong>Sign up</strong>
-                            </a>
-                            <a class="button is-light">
-                                Log in
-                            </a>
+                            @guest
+                                <a class="button is-primary" href={{ route('register') }}>
+                                    <strong>会員登録</strong>
+                                </a>
+                                <a class="button is-light" href={{ route('login') }}>
+                                    ログイン
+                                </a>
+                            @endguest
+                            @auth
+                                <a class="button is-primary">
+                                    スレッド作成
+                                </a>
+                                <form method="POST" action={{ route('logout') }}>
+                                    @csrf
+                                    <button class="button is-light" type="submit">ログアウト
+                                </form>
+                            @endauth
                         </div>
                     </div>
                 </div>
