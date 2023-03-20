@@ -23,6 +23,7 @@ Route::get('/thread', [ThreadController::class, 'create'])->name('thread.create'
 Route::post('/thread', [ThreadController::class, 'store'])->name('thread.store');
 Route::get('/thread/{thread}/edit', [ThreadController::class, 'edit'])->name('thread.edit');
 Route::patch('/thread/{thread}', [ThreadController::class, 'update'])->name('thread.update');
+Route::delete('/thread/{thread}', [ThreadController::class, 'destroy'])->name('thread.destroy');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'register'])->name('register');

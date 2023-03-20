@@ -13,9 +13,15 @@
                             <a href={{ route('thread.edit', $thread) }} class="dropdown-item">
                                 編集
                             </a>
-                            <a class="dropdown-item">
-                                削除
-                            </a>
+
+                            <form id="delete-form" action={{ route('thread.destroy', $thread) }} method="post">
+                                @csrf
+                                @method('DELETE')
+                                <a class="dropdown-item" onclick="showComfirmModal(event)">
+                                    削除
+                                </a>
+                            </form>
+
                             <hr class="dropdown-divider">
                             <a href="#" class="dropdown-item">
                                 通報する
@@ -66,6 +72,23 @@
             dropdown.classList.remove('is-active');
         } else {
             dropdown.classList.add('is-active');
+        }
+    }
+
+    function showComfirmModal(event) {
+        const result = window.confirm('スレッドを削除してもよろしいですか？');
+
+        const dropdown = document.getElementById('dropdown');
+        const deleteForm = document.getElementById('delete-form');
+
+        event.preventDefault();
+        if (result) {
+            alert('削除');
+            deleteForm.submit();
+            dropdown.classList.remove('is-active');
+        } else {
+            alert('キャンセル');
+            dropdown.classList.remove('is-active');
         }
     }
 </script>

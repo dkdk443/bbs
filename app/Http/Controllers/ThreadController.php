@@ -90,6 +90,9 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
-        //
+        // コメントも削除する
+        $thread->comments()->delete();
+        $thread->delete();
+        return redirect()->intended('/');
     }
 }
