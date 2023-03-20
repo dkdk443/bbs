@@ -18,6 +18,20 @@
                             <textarea class="textarea" placeholder="" name="content">{{ old('content') }}</textarea>
                         </div>
                     </div>
+                    @if ($errors->any())
+                        <div class="notification is-danger is-light">
+                            <button class="delete"></button>
+
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                        </div>
+                    @endif
                     <div class="field is-grouped">
                         <div class="control">
                             <button class="button is-link" type="submit">送信</button>

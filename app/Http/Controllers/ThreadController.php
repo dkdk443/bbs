@@ -51,7 +51,7 @@ class ThreadController extends Controller
 
         $comment->save();
 
-        return redirect()->intended('/');
+        return redirect('/')->with('success', 'スレットの作成に成功しました');
     }
 
     /**
@@ -82,7 +82,7 @@ class ThreadController extends Controller
             'title' => $request->title
         ]);
         $thread->save();
-        return redirect()->intended('/');
+         return redirect('/')->with('success', 'スレットの更新に成功しました');
     }
 
     /**
@@ -93,6 +93,6 @@ class ThreadController extends Controller
         // コメントも削除する
         $thread->comments()->delete();
         $thread->delete();
-        return redirect()->intended('/');
+        return redirect('/')->with('success', 'スレットの削除に成功しました');
     }
 }

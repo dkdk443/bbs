@@ -25,4 +25,11 @@ class StoreThreadRequest extends FormRequest
             'title' => 'string|max:100|required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'タイトル',
+        ];
+    }
 }

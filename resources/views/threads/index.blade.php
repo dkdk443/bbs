@@ -1,4 +1,10 @@
 <x-layout>
+    @if (session()->has('success'))
+        <div class="notification is-success" id="notice">
+            <button class="delete" onclick="deleteNotice()"></button>
+            <p>{{ session()->get('success') }}</p>
+        </div>
+    @endif
     <div class="block">
         @foreach ($threads as $thread)
             <div class="box">
@@ -83,13 +89,16 @@
 
         event.preventDefault();
         if (result) {
-            alert('削除');
             deleteForm.submit();
             dropdown.classList.remove('is-active');
         } else {
-            alert('キャンセル');
             dropdown.classList.remove('is-active');
         }
+    }
+
+    function deleteNotice() {
+        const notice = document.getElementById('notice');
+        notice.style.display = 'none';
     }
 </script>
 </x-layout>

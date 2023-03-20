@@ -30,7 +30,6 @@
 
                 </div>
             @endif
-
             <button class="button is-primary">ログイン</button>
         </form>
     </div>
