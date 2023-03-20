@@ -69,7 +69,8 @@ class ThreadController extends Controller
      */
     public function edit(Thread $thread)
     {
-        //
+        $thread = Thread::find($thread)->first();
+        return view('threads.edit')->with('thread', $thread);
     }
 
     /**
@@ -77,7 +78,11 @@ class ThreadController extends Controller
      */
     public function update(UpdateThreadRequest $request, Thread $thread)
     {
-        //
+        $thread->update([
+            'title' => $request->title
+        ]);
+        $thread->save();
+        return redirect()->intended('/');
     }
 
     /**

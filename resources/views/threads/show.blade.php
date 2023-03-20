@@ -1,7 +1,15 @@
 <x-layout>
     <div class="block">
+
         <div class="box">
-            <a href={{ route('top') }}>戻る</a>
+            <a href={{ route('top') }}>
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                    </span>
+                    <span>戻る</span>
+                </span>
+            </a>
             <div class="section">
                 <i class="fa-solid fa-ellipsis"></i>
                 <h4 class="title is-4 mt-5">{{ $thread->title }}</h4>

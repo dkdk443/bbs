@@ -9,6 +9,10 @@ class Thread extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

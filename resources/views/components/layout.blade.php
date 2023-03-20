@@ -9,7 +9,7 @@
     <script src="https://kit.fontawesome.com/a49741a2a5.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <title>えぬちゃんねる</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 
 <body>

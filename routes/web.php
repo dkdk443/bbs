@@ -21,6 +21,8 @@ Route::get('/', [ThreadController::class, 'index'])->name('top');
 Route::get('/thread/{thread}', [ThreadController::class, 'show'])->name('thread.show');
 Route::get('/thread', [ThreadController::class, 'create'])->name('thread.create');
 Route::post('/thread', [ThreadController::class, 'store'])->name('thread.store');
+Route::get('/thread/{thread}/edit', [ThreadController::class, 'edit'])->name('thread.edit');
+Route::patch('/thread/{thread}', [ThreadController::class, 'update'])->name('thread.update');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
