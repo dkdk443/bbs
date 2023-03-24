@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\CommentController;
+
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +27,8 @@ Route::post('/thread', [ThreadController::class, 'store'])->name('thread.store')
 Route::get('/thread/{thread}/edit', [ThreadController::class, 'edit'])->name('thread.edit');
 Route::patch('/thread/{thread}', [ThreadController::class, 'update'])->name('thread.update');
 Route::delete('/thread/{thread}', [ThreadController::class, 'destroy'])->name('thread.destroy');
+
+Route::post('/thread/{thread}/comment', [CommentController::class, 'store'])->name('comment.store');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [RegisterController::class, 'register'])->name('register');

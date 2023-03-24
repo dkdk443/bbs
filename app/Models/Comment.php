@@ -18,10 +18,6 @@ class Comment extends Model
 
     public function getCommentNo($threadId) {
         $previousComment = $this::where('thread_id', $threadId)->orderBy('created_at', 'DESC')->first();
-        if (!$previousComment) {
-            return 1;
-        } else {
-            return $previousComment->comment_no++;
-        }
+        return (int)$previousComment->comment_no + 1;
     }
 }
